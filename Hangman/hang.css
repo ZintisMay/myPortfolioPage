@@ -1,0 +1,35 @@
+/*/made resetgame*/
+/*/*made newsecretword it also resets display word*/
+
+/*
+to do:
+
+figure out how to influence output in html file, have output change
+do the same for image backgrounds*/
+
+
+/*document.getElementById('log').innerHTML += "<br>Some new content!";*/
+
+.output{float:left;background-color:black;text-align:center; width:250px;}
+body {color:white;}
+/*.whitefont{color:white;}*/
+
+.pic{background-color:black; background-image: url("Hangman1.png");width:100%;height:auto;}
+
+.big{float:left;}
+
+p{font-family:"Times New Roman";font-size:30px;}
+#text1{font-family:"Times New Roman";font-size:20px;letter-spacing-spacing:5px;}
+#text2{font-family:"Times New Roman";font-size:20px;letter-spacing-spacing:5px;}
+
+body{background-color:black;}
+
+#adjust{width:30px;height:30px;background-color:black;position:absolute;bottom:0;right:0;margin:10px;}
+
+#sound{width:30px;height:30px;background-color:black;position:absolute;bottom:0;right:0;margin:10px;}
+
+
+
+/*.startmenu{
+	float:left;
+}*/

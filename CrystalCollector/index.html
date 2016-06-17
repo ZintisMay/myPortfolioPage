@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Collector</title>
+
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- local style -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body background = "assets/images/background_img.jpg" onload="">
+
+	<audio id="01">
+		<source src="./assets/music/Chris_Zabriskie_-_01_-_Cylinder_One.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="02">
+		<source src="./assets/music/Chris_Zabriskie_-_01_-_The_Temperature_of_the_Air_on_the_Bow_of_the_Kaleetan.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="03">
+		<source src="./assets/music/Chris_Zabriskie_-_02_-_Readers_Do_You_Read.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="04">
+		<source src="./assets/music/Chris_Zabriskie_-_03_-_Cylinder_Three.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="05">
+		<source src="./assets/music/Chris_Zabriskie_-_04_-_The_Life_and_Death_of_a_Certain_K_Zabriskie_Patriarch.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="06">
+		<source src="./assets/music/Chris_Zabriskie_-_09_-_Cylinder_Nine.mp3" type="audio/mpeg">
+	</audio>		
+
+	<audio id="tinkle">
+		<source src="./assets/music/tinkle.wav" type="audio/mpeg">
+	</audio>
+	<audio id="tinkle2">
+		<source src="./assets/music/tinkle2.wav" type="audio/mpeg">
+	</audio>
+	<audio id="tinkle3">
+		<source src="./assets/music/tinkle3.wav" type="audio/mpeg">
+	</audio>
+	<audio id="breaking">
+		<source src="./assets/music/breaking.mp3" type="audio/mpeg">
+	</audio>
+
+	<!-- pause audio button -->
+	<div id="adjust" onclick="pauseAudio();">
+		<img id="sound" src="sound.png" />
+	</div>
+
+	<div class="container">
+	  <div class="row">
+		<div class="main col col-sm-2" /><!-- buffer col -->
+		
+		<div class="main col col-sm-8">
+
+<!-- 			<div class="main">
+
+				<h1>Crystal-Collector!</h1>
+				<p class="normalfont" >Click on a crystal to increase your score.<br>Match the target number to win!<br>Exceed the target number and lose!<br>Good Luck!</p>
+				<button id="begin" class="btn btn-success">Click here to Start!</button>
+			</div> -->
+
+			<div class="row">
+
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				  	<h1>Crystal-Collector!</h1>
+				  </div>
+				  <div class="panel-body">
+				    <p class="normalfont" >Click on a crystal to increase your score.<br>Match the target number to win!<br>Exceed the target number and lose!<br>Good Luck!</p>
+				  </div>
+				  <div class="panel-footer">
+				  	<button id="begin" class="btn btn-success">Click here to Start!</button>
+				  </div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+
+					<div class="panel panel-default minipanel">
+					  <div class="panel-heading">Target Number:</div>
+					  <div class="panel-body" id="targetnumber">
+					    ?
+					  </div>
+					</div>
+
+
+
+					<div class="panel panel-default minipanel">
+					  <div class="panel-heading">Current Number:</div>
+					  <div class="panel-body" id="currentnumber">
+					    0
+					  </div>
+					</div>
+
+			</div>
+			
+			<div class="row">
+				<div class="panel panel-default">
+				  <div class="panel-heading">Score:</div>
+				  <div class="panel-body" >
+				  	<div id="winning"></div>
+					<div id="losing"></div>
+				  </div>
+				  
+				</div>
+			</div>
+
+			<div class="row">	
+				<div class="panel panel-default">
+				  	<div class="panel-heading">Crystals:</div>
+				  	
+				  	<div class="panel-body">
+
+					  	<div id="red"><img src="assets/images/red.png" alt="Red"></div>
+
+						<div id="blue"><img src="assets/images/blue.png" alt="blue"></div>
+
+						<div id="green"><img src="assets/images/green.png" alt="green"></div>
+
+						<div id="yellow"><img src="assets/images/yellow.png" alt="yellow"></div>	
+
+					</div>
+				  
+				</div>
+			</div>
+
+		</div><!--column8-->
+
+		<div class="main col col-sm-2">		
+			<!-- audiopausebutton -->
+
+		</div><!-- buffer col -->
+
+
+	  </div>
+	</div>
+
+	  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+
+        <div class="modal-body">
+          <p id="modalP"></p>
+        </div>
+      
+      </div>
+      
+    </div>
+  </div>
+
+	<script src="assets\javascript\game.js"></script>
+
+
+</body>
+</html>

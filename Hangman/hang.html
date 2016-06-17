@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="hang.css">
+</head>
+
+<body onload="playAudio();makesecretword();	updatenumbers();
+"  background-image: url("Hangman1.png");>
+<!-- audio tag -->
+
+	<audio id="thegood">
+		<source src="thegood.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="thebang1">
+		<source src="bang1.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="thebang2">
+		<source src="bang2.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="thebang3">
+		<source src="bang3.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="thebang4">
+		<source src="bang4.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="thebang5">
+		<source src="bang5.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="thewinner">
+		<source src="makemyday.wav" type="audio/mpeg">
+	</audio>
+
+	<audio id="theloser">
+		<source src="dying.wav" type="audio/mpeg">
+	</audio>
+
+
+
+
+<!-- audiobutton -->
+
+<!-- 
+<button onclick="pauseAudio()" type="button">Pause Audio</button> 
+<button onclick="playAudio1()" type="button">Bang!</button> 
+<button onclick="playAudio2()" type="button">Bang!</button> 
+<button onclick="playAudio3()" type="button">Bang!</button> 
+<button onclick="playAudio4()" type="button">Bang!</button> 
+<button onclick="playAudio5()" type="button">Bang!</button> 
+<button onclick="playAudioL()" type="button">Bang!</button> 
+<button onclick="playAudioW()" type="button">Bang!</button> --> 
+
+
+<!--Big Div-->
+
+<div class="big"><img src="Hangman1.png" id="toChange"/></div>
+
+<!-- textbox -->
+<div class="output">
+
+	<div class="output">
+		<h1>Hangman</h1>
+
+		<div >
+			<h4 id="text1a" class="whitefont">a</h4>
+
+			<p id="text1" class="whitefont"></p>
+		</div>
+	</div>
+
+	<div class="output">
+		<h1>Wrong Letters</h1>
+
+		<div >
+			<h4 id="text2a" class="whitefont">b</h4>
+
+			<p id="text2" class="whitefont" ></p>
+
+		</div>
+	</div>
+
+	<div class="output">
+		
+
+		<h1 onclick="reset();" class="startmenu">Start Over</h1>
+
+		<p id="answer" class="startmenu"></p>
+
+		
+	</div>
+</div>
+
+<!-- //pause audio button -->
+
+<div id="adjust" onclick="pauseAudio();"/>
+
+	<img id="sound" src="sound.png" >
+
+</div>
+
+<!-- script -->
+<script type="text/javascript">
+
+//alert shutdown----------------------------------------------------
+var trial = false;
+//------------------------------------------------------------------
+
+
+//main
+	var bangnumber = 1;
+	var secretword = "google";
+	var displayword = "";
+	var guessletter;
+	var rightletter;
+	var usedletter = "";
+	var start = true;
+	var lose = false;
+	var win = false;
+	var checker1 = 0;
+	var checker2 = 0;
+
+//number setter
+
+function updatenumbers(){	
+
+
+
+	document.getElementById('text1a').innerHTML="Letters in the word: " + (secretword.length);
+
+	document.getElementById('text2a').innerHTML="Guesses left: " + (8 - usedletter.length);
+}
+
+//secretword randomizer
+
+function makesecretword(){
+
+		randomnumber =	Math.floor(Math.random() * 9 +1);
+
+if (trial == true){alert (randomnumber);}
+
+	switch(randomnumber){
+
+		case 1: secretword = "tomahawk";break;
+		case 2: secretword = "western";break;
+		case 3: secretword = "gunslinger";break;
+		case 4: secretword = "tumbleweed";break;
+		case 5: secretword = "cavalry";break;
+		case 6: secretword = "showdown";break;
+		case 7: secretword = "gambler";break;
+		case 8: secretword = "whosaysithastobeoneword";break;
+		case 9: secretword = "clinteastwood";break;
+
+	}
+
+if (trial == true){alert(secretword);}
+//resets displayword
+		displayword = "";
+	for (l=0;l<secretword.length;l++){
+
+		displayword = displayword + "_";
+	}
+
+if (trial == true){alert(displayword);}
+}
+
+
+//imagechanger function and variables
+	var audio=true;
+	var imagecount = 2;
+
+	var theChange = document.getElementById('toChange');
+
+function changeimage2(p) {
+   	switch (imagecount){
+   		// case 0:document.getElementById('toChange').src='Hangman0.png'; imagecount++;break;
+   		case 1:theChange.src='Hangman1.png'; imagecount++;break;
+   		case 2:theChange.src='Hangman2.png'; imagecount++;break;
+   		case 3:theChange.src='Hangman3.png'; imagecount++;break;
+   		case 4:theChange.src='Hangman4.png'; imagecount++;break;
+   		case 5:theChange.src='Hangman5.png'; imagecount++;break;
+   		case 6:theChange.src='Hangman6.png'; imagecount++;break;
+   		case 7:theChange.src='Hangman7.png'; imagecount++;break;
+   		case 8:theChange.src='Hangman8.png'; imagecount++;break;
+   		case 9:theChange.src='Hangman9.png';break; 
+
+   		// imagecount = 1;
+   		
+   		// case 10:document.getElementById('toChange').src='Hangman10.png'; imagecount = 1;break;
+   	}
+}
+
+//testing write in div
+
+document.getElementById('text1').innerHTML += "<br>______";
+
+document.getElementById('text2').innerHTML += "<br>________";
+
+
+
+//pause
+function pauseAudio() { 
+
+    
+
+    if (audio == true)
+    {document.getElementById('sound').src='soundx.png';audio=false;good.pause(); }
+    else if (audio == false)
+    {document.getElementById('sound').src='sound.png';audio=true;good.play();}
+
+} 
+
+//audio
+	var good = document.getElementById("thegood");
+	good.volume = 0.5;
+
+	function playAudio() { 
+	    good.play(); 
+	} 
+
+	var bang1 = document.getElementById("thebang1");
+
+		bang1.volume = 0.5;
+
+	function playAudio1() { 
+	    bang1.play(); 
+	} 
+
+	var bang2 = document.getElementById("thebang2");
+		bang2.volume = 0.5;
+	function playAudio2() { 
+	    bang2.play(); 
+	} 
+
+	var bang3 = document.getElementById("thebang3");
+		bang3.volume = 0.5;
+	function playAudio3() { 
+	    bang3.play(); 
+	}
+
+	var bang4 = document.getElementById("thebang4");
+		bang4.volume = 0.5;
+	function playAudio4() { 
+	    bang4.play(); 
+	} 
+
+	var bang5 = document.getElementById("thebang5");
+		bang5.volume = 0.5;
+	function playAudio5() { 
+	    bang5.play(); 
+	} 	
+
+	var loser = document.getElementById("theloser");
+		loser.volume = 0.5;
+	function playAudioL() { 
+	    loser.play(); 
+	} 	
+
+	var winner = document.getElementById("thewinner");
+		winner.volume = 0.5;
+	function playAudioW() { 
+	    winner.play(); 
+	} 	
+
+//cycles through bang sounds
+	function cyclebang(tempnumber){
+
+		switch(tempnumber){
+			case 1: playAudio1();bangnumber = 2; break;
+			case 2: playAudio2();bangnumber = 3; break;
+			case 3: playAudio3();bangnumber = 4;  break;
+			case 4: playAudio4();bangnumber = 5;  break;
+			case 5: playAudio5();bangnumber = 1;  break;
+		}
+	}
+
+//replaces the document write instances
+	function writetext(q, w){
+	document.getElementById(q).innerHTML = w;
+	}
+
+
+//resets the game
+	function reset(){
+		makesecretword();
+		//displayword = "______";
+		usedletter = "";
+		writetext('text1', displayword);
+		writetext('text2', usedletter);
+		imagecount = 2;
+		document.getElementById('toChange').src='Hangman1.png';
+		start = true;
+		win = false;
+		lose = false;
+
+		updatenumbers();
+		console.log(secretword + usedletter + win + lose + checker1 + checker2);
+
+		document.getElementById('answer').innerHTML="";
+
+	}
+
+//functions - thanks stack overflow
+String.prototype.replaceAt=function(index, character) {
+    return this.substr(0, index) + character + this.substr(index+character.length);
+}
+
+
+
+
+
+// keypress, make lower case
+document.onkeyup = function(event){
+
+	var guessletter = String.fromCharCode(event.keyCode).toLowerCase();
+	
+
+	//alert(guessletter);
+
+//lettercheckerloop
+	for(x=0;x<=secretword.length;x++){
+		
+//letterchecker
+		if (guessletter == secretword[x] && lose == false){
+
+				displayword = displayword.replaceAt(x, guessletter);
+				checker1 = 1;
+				//new code to displayword
+				writetext('text1', displayword);//document.getElementById('text1').innerHTML = displayword;
+				//end new code to displayword
+
+		}
+//word replacer
+		if (displayword == secretword && win==false){playAudioW();//alert("You Won!"); 
+		// reset(); 
+		win = true;
+		break;}
+
+	}
+
+//usedletter checker
+
+	for(f=0;f<usedletter.length;f++){
+		if (guessletter == usedletter[f])
+			{checker2 = 1;}
+	}
+
+//bang bang
+	if (checker1 == 0 && usedletter.length < 8 && checker2 == 0 && win == false){
+			
+
+
+			if (start == true){
+
+				usedletter = guessletter;
+				start = false;
+				cyclebang(bangnumber);
+				changeimage2(imagecount);
+				writetext('text2', usedletter);
+			}
+			else{
+				usedletter = usedletter + guessletter;
+						//new code to write in box
+
+						writetext('text2', usedletter);//document.getElementById('text2').innerHTML = usedletter;
+
+						//end new code
+				cyclebang(bangnumber);
+				changeimage2(imagecount);
+			}
+
+	}
+//reset and cleanup
+
+	if (usedletter.length == 8){
+		playAudioL();
+		lose = true;
+		//alert("YOU LOSE!");
+		
+		//reset();
+
+
+			document.getElementById('answer').innerHTML="Answer: " + secretword;
+		
+	}
+
+
+
+	checker1 = 0;//reset the checker for secretword hit
+	checker2 = 0;//reset the checker for usedletter hit
+	console.log(secretword + " " + displayword + " " + usedletter);//resets the words
+	updatenumbers();
+
+
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>
