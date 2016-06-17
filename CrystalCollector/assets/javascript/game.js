@@ -20,9 +20,16 @@
 	//sets volume
 	tinkle.volume = 1;
 
+	var tinkle4 = document.getElementById("tinkle3");
+	//sets volume
+	tinkle.volume = 1;
+
 	var breaking = document.getElementById("breaking");
 	//sets volume
 	breaking.volume = 1;
+
+	var yay = document.getElementById("yay");
+	yay.volume = 1;
 
 	var tinklecounter = 0;
 
@@ -40,8 +47,12 @@
 				console.log("tinklecounter = 1")
 			}else if (tinklecounter == 2){
 				tinkle3.play();
-				tinklecounter = 0;
+				tinklecounter++;
 				console.log("tinklecounter = 2")
+			}else if (tinklecounter == 3){
+				tinkle4.play();
+				tinklecounter = 0;
+				console.log("tinklecounter = 3")
 			}
 		}else {
 			var theMusic = x;
@@ -53,9 +64,9 @@
 	function pauseAudio() { 
 
 	    if (audio == true)
-	    {document.getElementById('sound').src='soundx.png';audio=false;music01.pause(); }
+	    {document.getElementById('sound').src='assets/images/soundx.png';audio=false;music01.pause(); }
 	    else if (audio == false)
-	    {document.getElementById('sound').src='sound.png';audio=true;music01.play();}
+	    {document.getElementById('sound').src='assets/images/sound.png';audio=true;music01.play();}
 
 	} 
 	
@@ -74,8 +85,8 @@ var losses = 0;
 
 //enter low end of range, and high end of range, changes randomnumber
 
-$('#winning').html("Wins: " + wins);
-$('#losing').html("Losses: " + losses);
+$('#winning').html(wins);
+$('#losing').html(losses);
 
 
 function randomizer(x, y) {
@@ -194,7 +205,7 @@ function showModal(){
 function checker(){
 
 	if (currentnumber == targetnumber){
-		// alert("You Win!");
+		playMusic(yay);
 		$('.modal-title').html("CONGRATULATIONS!");
 		$('#modalP').html("You Win!");
 		showModal();

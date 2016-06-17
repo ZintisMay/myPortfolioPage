@@ -27,34 +27,35 @@ background-image:"assets/images/yellow.png";
 
 img {height:100%; width:100px; margin:10px;}
 
-.clear{clear:both;}
+
 
 h1{
 	text-align:center;
-	width:600px;
 	font-size:50px;
 }
 
 
 .normalfont {
 
-	width:600px;
 	text-align:center;
 	font-size:20px;
-
 }
+
+
 
 #begin {text-align: center;}
 
-.panel{margin:20px;width:600px;}
+.panel{margin:10px;}
 .panel div{text-align:center;font-size:25px;}
-.minipanel {width:280px;float:left;}
-.main {text-align: center;width:100%;}
 
+.main {text-align: center;}
+.col-sm-3{text-align: center;}
+/*//sound*/
 #adjust{z-index:99;width:30px;height:30px;margin:10px;position:absolute;top:0;left:0}
 
 #sound{width:30px;height:30px;margin:10px;position:absolute;top:0;left:0}
 .cboth{clear:both;}
+.col-sm-6{margin:0px;}
 
 /*@media only screen and (max-width: 680px) {
     .minipanel {

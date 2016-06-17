@@ -53,20 +53,30 @@
 	<audio id="tinkle3">
 		<source src="./assets/music/tinkle3.wav" type="audio/mpeg">
 	</audio>
+	<audio id="tinkle4">
+		<source src="./assets/music/tinkle4.wav" type="audio/mpeg">
+	</audio>
+
 	<audio id="breaking">
 		<source src="./assets/music/breaking.mp3" type="audio/mpeg">
 	</audio>
+	<audio id="yay">
+		<source src="./assets/music/yay.mp3" type="audio/mpeg">
+	</audio>
 
-	<!-- pause audio button -->
+<!-- pause audio button -->
 	<div id="adjust" onclick="pauseAudio();">
-		<img id="sound" src="sound.png" />
+		<img id="sound" src="assets/images/sound.png" />
 	</div>
 
+<!-- //main content -->
 	<div class="container">
-	  <div class="row">
-		<div class="main col col-sm-2" /><!-- buffer col -->
+	  <div class="">
+
+		<div class="main col col-lg-2">
+		</div>
 		
-		<div class="main col col-sm-8">
+		<div class="main col col-lg-8">
 
 <!-- 			<div class="main">
 
@@ -75,81 +85,104 @@
 				<button id="begin" class="btn btn-success">Click here to Start!</button>
 			</div> -->
 
+			<!-- intro -->
 			<div class="row">
-
-				<div class="panel panel-default">
-				  <div class="panel-heading">
-				  	<h1>Crystal-Collector!</h1>
-				  </div>
-				  <div class="panel-body">
-				    <p class="normalfont" >Click on a crystal to increase your score.<br>Match the target number to win!<br>Exceed the target number and lose!<br>Good Luck!</p>
-				  </div>
-				  <div class="panel-footer">
-				  	<button id="begin" class="btn btn-success">Click here to Start!</button>
-				  </div>
+				<div class="col col-md-12">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					  	<h1>Crystal-Collector!</h1>
+					  </div>
+					  <div class="panel-body">
+					    <p class="normalfont" >Click on a crystal to increase your score.<br>Match the target number to win!<br>Exceed the target number and lose!<br>Good Luck!</p>
+					  </div>
+					  <div class="panel-footer">
+					  	<button id="begin" class="btn btn-success">Click here to Start!</button>
+					  </div>
+					</div>
 				</div>
-				
-			</div>
+<!-- 			</div> -->
 
-			<div class="row">
+			<!-- //crystals -->
+<!-- 			<div class="row"> -->	
+				<div class="col col-md-12">
+					<div class="panel panel-default">
+					  	<div class="panel-heading">Crystals:</div>
+					  	
+					  	<div class="panel-body">
+					  		<div class="row">
+					  		<div class="col col-sm-3">
+							  	<div id="red"><img src="assets/images/red.png" alt="Red"></div>
+								</div>
+								<div class="col col-sm-3">
+								<div id="blue"><img src="assets/images/blue.png" alt="blue"></div>
+								</div>
+								<div class="col col-sm-3">
+								<div id="green"><img src="assets/images/green.png" alt="green"></div>
+								</div>
+								<div class="col col-sm-3">
+								<div id="yellow"><img src="assets/images/yellow.png" alt="yellow"></div>
+								</div>
+							</div>
 
+						</div>
+					  
+					</div>
+				</div>
+
+
+			<!-- target/current -->
+<!-- 			<div class="row"> -->
+				<div class="col col-md-4">
 					<div class="panel panel-default minipanel">
 					  <div class="panel-heading">Target Number:</div>
 					  <div class="panel-body" id="targetnumber">
 					    ?
 					  </div>
 					</div>
+				</div>
 
 
-
+				<div class="col col-md-4">
 					<div class="panel panel-default minipanel">
 					  <div class="panel-heading">Current Number:</div>
 					  <div class="panel-body" id="currentnumber">
 					    0
 					  </div>
 					</div>
-
-			</div>
+				</div>
+<!-- 			</div> -->
 			
-			<div class="row">
-				<div class="panel panel-default">
-				  <div class="panel-heading">Score:</div>
-				  <div class="panel-body" >
-				  	<div id="winning"></div>
-					<div id="losing"></div>
-				  </div>
+			<!-- //score -->
+<!-- 			<div class="row"> -->
+				<div class="col col-md-4">	
+					<div class="panel panel-default">
+					  <div class="panel-heading">Score:</div>
+					  <div class="panel-body" >
+					  	<!-- <div class="row"> -->
+					  		<div class="col col-sm-6">
+					  			<h4>Wins:</h4>
+							  	<div id="winning"></div>
+						  	</div>
+					  		<div class="col col-sm-6">
+					  			<h4>Losses:</h4>
+								<div id="losing"></div>
+							</div>
+					  	<!-- </div> -->
+					  </div>
 				  
-				</div>
-			</div>
-
-			<div class="row">	
-				<div class="panel panel-default">
-				  	<div class="panel-heading">Crystals:</div>
-				  	
-				  	<div class="panel-body">
-
-					  	<div id="red"><img src="assets/images/red.png" alt="Red"></div>
-
-						<div id="blue"><img src="assets/images/blue.png" alt="blue"></div>
-
-						<div id="green"><img src="assets/images/green.png" alt="green"></div>
-
-						<div id="yellow"><img src="assets/images/yellow.png" alt="yellow"></div>	
-
 					</div>
-				  
-				</div>
+				</div>	
+<!-- 			</div> -->
+
+
 			</div>
 
 		</div><!--column8-->
 
-		<div class="main col col-sm-2">		
-			<!-- audiopausebutton -->
+		<div class="main col col-lg-2">
+			
+		</div>	
 
-		</div><!-- buffer col -->
-
-
-	  </div>
 	</div>
 
 	  <!-- Modal -->
