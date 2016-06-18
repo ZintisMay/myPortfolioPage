@@ -1,32 +1,39 @@
+
+//utils
+function randomizer(x, y) {
+	return randomnumber = Math.floor(Math.random() * (y-x) + x);
+}
+
 //audio section
 
 	//for the audio button
 	var audio=true;
 
+	var currentSong = 0;
+	var music01 = [];
+
 	//sets var to audio file in html page
-	var music01 = document.getElementById("01");
+	for(x=1;x<7;x++){
+		var temp = "0" + x;
+		console.log(temp);
+		music01.push(document.getElementById(temp));
+	}
+
+
 	//sets volume
 	music01.volume = 0.5;
+	console.log(music01);
 
+	//the tinkle sounds
 	var tinkle = document.getElementById("tinkle");
-	//sets volume
-	tinkle.volume = 1;
 
 	var tinkle2 = document.getElementById("tinkle2");
-	//sets volume
-	tinkle.volume = 1;
 
 	var tinkle3 = document.getElementById("tinkle3");
-	//sets volume
-	tinkle.volume = 1;
 
 	var tinkle4 = document.getElementById("tinkle3");
-	//sets volume
-	tinkle.volume = 1;
 
 	var breaking = document.getElementById("breaking");
-	//sets volume
-	breaking.volume = 1;
 
 	var yay = document.getElementById("yay");
 	yay.volume = 1;
@@ -56,6 +63,7 @@
 			}
 		}else {
 			var theMusic = x;
+			console.log(theMusic);
 			theMusic.play();		
 		}
 
@@ -63,15 +71,39 @@
 
 	function pauseAudio() { 
 
-	    if (audio == true)
-	    {document.getElementById('sound').src='assets/images/soundx.png';audio=false;music01.pause(); }
-	    else if (audio == false)
-	    {document.getElementById('sound').src='assets/images/sound.png';audio=true;music01.play();}
-
+		if(game == true){
+			if (audio == true){
+		    	document.getElementById('sound').src='assets/images/soundx.png';
+		    	audio=false;
+		    	music01[currentSong].pause(); 
+		    }
+		    else if (audio == false){
+		    	document.getElementById('sound').src='assets/images/sound.png';
+		    	audio=true;
+		    	music01[currentSong].play();
+		    }
+		}
+	    
 	} 
 	
+	function nextAudio() {
 
-//old section
+		console.log(currentSong);
+		if(game == true){	
+			music01[currentSong].pause();
+
+			if (audio == true){
+
+		    	music01[currentSong].pause(); 
+			}
+
+			currentSong = currentSong+1;
+			if(currentSong == 6){currentSong = 0;}
+			playMusic(music01[currentSong]);
+		}	
+	}
+
+//declares globals, etc...
 var game = false;
 var randomnumber;
 var red;
@@ -82,17 +114,10 @@ var targetnumber = 0;
 var currentnumber = 0;
 var wins = 0;
 var losses = 0;
-
-//enter low end of range, and high end of range, changes randomnumber
-
 $('#winning').html(wins);
 $('#losing').html(losses);
 
-
-function randomizer(x, y) {
-
-	return randomnumber = Math.floor(Math.random() * (y-x) + x);
-}
+//game code begins here
 
 function begin() {
 
@@ -104,43 +129,13 @@ yellow = randomizer(2, 15);
 game = true;
 currentnumber = 0;
 
-playMusic(music01);
-
-// function playRandomMusic(){
-// 	var randomMusicNumber = Math.floor((Math.random()*6)+1);
-// 	console.log(randomMusicNumber);
-// 	var targetMusic = "music0" + randomMusicNumber;
-// 	var musicObject = document.getElementById(targetMusic);
-// 	playMusic(musicObject);
-// }
-
-
+currentSong = randomizer(0, 5);
+playMusic(music01[currentSong]);
 
 $('#targetnumber').html(targetnumber);
 $('#currentnumber').html(currentnumber);
 
-
-// console.log(red + 
-// 	" " + blue + 
-// 	" " + green + 
-// 	" " + yellow);
-// console.log(targetnumber);
 }
-
-
-// console.log(red + 
-// 	" " + blue + 
-// 	" " + green + 
-// 	" " + yellow)
-// console.log(targetnumber)
-
-// for (a=0;a<=1;a++){
-
-// randomizer(5, 15);
-
-// console.log("randomnumber" + randomnumber);
-
-// }
 
 $('#red').on('click', function() {
 	if (game == true){
@@ -148,8 +143,6 @@ $('#red').on('click', function() {
 		console.log(currentnumber)
 		playMusic(tinkle);
 		updatecurrent();
-
-
 	}
 });
 
@@ -159,7 +152,6 @@ $('#blue').on('click', function() {
 		console.log(currentnumber)
 		playMusic(tinkle);
 		updatecurrent();
-
 	}	
 });
 
@@ -169,7 +161,6 @@ $('#green').on('click', function() {
 		console.log(currentnumber)
 		playMusic(tinkle);
 		updatecurrent();
-
 	}
 });
 
@@ -179,7 +170,6 @@ $('#yellow').on('click', function() {
 		console.log(currentnumber)
 		playMusic(tinkle);
 		updatecurrent();
-
 	}
 });
 
@@ -191,17 +181,15 @@ if (game==false){
 });
 
 function updatecurrent(){
-
 	$('#currentnumber').html(currentnumber);
 	checker();
-
 }
 
 function showModal(){
-
 	$('#myModal').modal('show');
 }
 
+//runs after click, checks for victory/defeat and plays appropriate sounds
 function checker(){
 
 	if (currentnumber == targetnumber){
@@ -227,7 +215,7 @@ function checker(){
 		begin();
 	}
 
-	$('#winning').html("Wins: " + wins);
-	$('#losing').html("Losses: " + losses);
+	$('#winning').html(wins);
+	$('#losing').html(losses);
 
  }

@@ -34,6 +34,7 @@ h1{
 	font-size:50px;
 }
 
+panel-
 
 .normalfont {
 
@@ -51,14 +52,42 @@ h1{
 .main {text-align: center;}
 .col-sm-3{text-align: center;}
 /*//sound*/
-#adjust{z-index:99;width:30px;height:30px;margin:10px;position:absolute;top:0;left:0}
+#boss{
+	top:0;
+	left:0;
+	position:fixed;
+	z-index:99;
+}
+#adjust, #sound, #next, #track{
+	width:30px;
+	height:30px;
+	margin:10px;
 
-#sound{width:30px;height:30px;margin:10px;position:absolute;top:0;left:0}
-.cboth{clear:both;}
+}
+#adjust{
+
+}
+/*#sound{
+	top:0;
+	left:0;
+}*/
+#next{
+/*	top:150;
+	left:150;*/
+}
+/*#track{
+	top:150;
+	left:0;
+}*/
+
 .col-sm-6{margin:0px;}
-
+.col-sm-4 > div, .col-sm-4 > button{margin:auto;}
 /*@media only screen and (max-width: 680px) {
     .minipanel {
         width:600px;
     }
 }*/
+
+.panel-default > .panel-custom {
+	background: #ff0000; color: #fff;
+}

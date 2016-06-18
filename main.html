@@ -38,29 +38,29 @@
 		</div>
 			
 <div class="container">
+	<div class="row">
+		<div class="col-md-2 ">
 
-	<div class="col-md-2 ">
-
-	</div>
-
-	<div class="col-md-8 ">
-
-		<div class="bigImage">
-			
 		</div>
 
+		<div class="col-md-8 ">
+
+			<div class="bigImage">
+				
+			</div>
+
+
+		</div>
+
+		<div class="col-md-2 scroll">
+			<img src="pcomber.png" class="img-rounded">
+			<img src="hman.png" class="img-rounded">
+			<img src="ccollector.png" class="img-rounded">
+			<img src="ccode.png" class="img-rounded">
+			<img src="pcomber.png" class="img-rounded">
+			<img src="pcomber.png" class="img-rounded">
+		</div>
 	</div>
-
-	<div class="col-md-2 scroll">
-		<img src="pcomber.png" class="img-rounded">
-		<img src="pcomber.png" class="img-rounded">
-		<img src="pcomber.png" class="img-rounded">
-		<img src="pcomber.png" class="img-rounded">
-		<img src="pcomber.png" class="img-rounded">
-		<img src="pcomber.png" class="img-rounded">
-
-	</div>
-
 	<!-- <div class="container">
 		<div class="background">
 			<div class="mainbody">
@@ -123,47 +123,58 @@
 </div>
 
 
-<script>
+	<script>
 
-	var info = {
+		// var info = {
 
-		a: {
-			src:
-		},
-		b: {
-			src:
-		},
-		c: {
-			src:
-		},
-		d: {
-			src:
-		},
-		e: {
-			src:
-		},
-		f: {
-			src:
-		}
-	}
-	
-	$('.img-rounded').hover(
-
-		function(){
-			$('.bigImage').html(
-
-				"<img style='width:100%;' src='"+this.src+"' />"
+		// 	a: {
+		// 		src:
+		// 	},
+		// 	b: {
+		// 		src:
+		// 	},
+		// 	c: {
+		// 		src:
+		// 	},
+		// 	d: {
+		// 		src:
+		// 	},
+		// 	e: {
+		// 		src:
+		// 	},
+		// 	f: {
+		// 		src:
+		// 	}
+		// }
 
 
+$(document).ready(function(){
+	$(".img-rounded").hover(function(){
 
-				)
+		    $('.bigImage').html("<img style='width:100%;' src='"+this.src + "' />")
+		    
+		    }, function(){
 
-		}, function(){
-
-		}
+			}
 	);
+});
+	
 
-</script>
+		// $('.img-rounded').mouseover(
+
+		// 	function(){
+		// 		$('.bigImage').html(
+
+		// 			"<img style='width:100%;' src='pcomber.png' />"
+
+		// 			);
+
+		// 	}, function(){
+
+		// 	}
+		// );
+
+	</script>
 
 </body>
 </html>

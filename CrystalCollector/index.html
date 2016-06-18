@@ -65,9 +65,18 @@
 	</audio>
 
 <!-- pause audio button -->
-	<div id="adjust" onclick="pauseAudio();">
-		<img id="sound" src="assets/images/sound.png" />
+
+	<div id="boss">
+
+		<div  id="adjust" onclick="pauseAudio();">
+			<img id="sound" src="assets/images/sound.png" />
+		</div>
+		<div id="next" onclick="nextAudio();">
+			<img id="track" src="assets/images/nexttrack.png" />
+		</div>
+		
 	</div>
+
 
 <!-- //main content -->
 	<div class="container">
@@ -89,21 +98,38 @@
 			<div class="row">
 				<div class="col col-md-12">
 					<div class="panel panel-default">
-					  <div class="panel-heading">
+					  <div class="panel-heading panel-custom">
 					  	<h1>Crystal-Collector!</h1>
 					  </div>
 					  <div class="panel-body">
 					    <p class="normalfont" >Click on a crystal to increase your score.<br>Match the target number to win!<br>Exceed the target number and lose!<br>Good Luck!</p>
 					  </div>
-					  <div class="panel-footer">
-					  	<button id="begin" class="btn btn-success">Click here to Start!</button>
-					  </div>
+					    <div class="panel-footer">
+
+
+
+						  <!-- 	<div class="row"> -->
+
+					<!-- 		  <div class="col col-sm-4"> -->
+
+				<!-- 			  </div> -->
+
+  			<!-- 		    	  <div class="col col-sm-4"> -->
+							  	<button id="begin" class="btn btn-success">Click here to Start!</button>
+<!-- 							  </div> -->
+
+	<!-- 						  <div class="col col-sm-4"> -->
+
+<!-- 							  </div> -->
+<!-- 
+					 	    </div> -->
+					 	</div>
 					</div>
 				</div>
-<!-- 			</div> -->
+			</div>
 
 			<!-- //crystals -->
-<!-- 			<div class="row"> -->	
+			<div class="row">	
 				<div class="col col-md-12">
 					<div class="panel panel-default">
 					  	<div class="panel-heading">Crystals:</div>
@@ -128,10 +154,10 @@
 					  
 					</div>
 				</div>
-
+			</div>
 
 			<!-- target/current -->
-<!-- 			<div class="row"> -->
+			<div class="row">
 				<div class="col col-md-4">
 					<div class="panel panel-default minipanel">
 					  <div class="panel-heading">Target Number:</div>
@@ -156,7 +182,9 @@
 <!-- 			<div class="row"> -->
 				<div class="col col-md-4">	
 					<div class="panel panel-default">
-					  <div class="panel-heading">Score:</div>
+
+					  		
+
 					  <div class="panel-body" >
 					  	<!-- <div class="row"> -->
 					  		<div class="col col-sm-6">
@@ -172,7 +200,7 @@
 				  
 					</div>
 				</div>	
-<!-- 			</div> -->
+			</div>
 
 
 			</div>

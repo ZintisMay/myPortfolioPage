@@ -11,8 +11,9 @@ body {background-color:#8cd9d9;}
 .panel-header {background-color:#81b3e4;}
 .panel {width:100%;}
 h4{text-align: center}
-.img-rounded {float:left;width:100%;margin:5px;border:2px solid #ooo;}
+.img-rounded {float:left;height:100px;margin:5px;border:2px solid #ooo;}
 .img-rounded:hover{border-color:red;border:2px solid red;}
+
 .scroll{height:100%;}
 .container{width:100%;}
 
