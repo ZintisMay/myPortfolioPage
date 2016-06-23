@@ -1,0 +1,33 @@
+<<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<title>
+		
+	</title>
+</head>
+<body>
+
+<button id="showall">showall</button>
+<script type="text/javascript">
+	
+var currentURL = window.location.origin;
+
+	function showallAjax(){
+
+		$.get({currentURL + "/all", function(data){
+			console.log(data);
+			}
+		})
+	}
+
+	$(document).on('click', '#showall', function(){
+
+		showallAjax();
+	}
+
+</script>
+</body>
+</html>
