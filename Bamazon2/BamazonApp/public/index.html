@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -15,18 +15,23 @@
 	
 var currentURL = window.location.origin;
 
-	function showallAjax(){
+console.log(currentURL);
 
-		$.get({currentURL + "/all", function(data){
-			console.log(data);
-			}
-		})
-	}
+var allURL = currentURL + "/all";
+
+console.log(allURL);
+
+var localData;
 
 	$(document).on('click', '#showall', function(){
 
-		showallAjax();
-	}
+		console.log("showallajax");
+
+		$.get(allURL, function(data){
+			console.log(data);
+			localData = data;
+		});
+	});
 
 </script>
 </body>

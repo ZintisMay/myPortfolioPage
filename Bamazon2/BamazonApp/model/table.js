@@ -2,31 +2,37 @@ var Sequelize = require("sequelize");
 
 var sequelize = require("../config/connection.js"); 
 
-var Table = sequelize.define("character", {
-	id: {
+var Bamazon = sequelize.define("bamazon", {
+	ItemID: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
 		primaryKey: true
 	},
-	routeName: {
+	ProductName: {
 		type: Sequelize.STRING,
 	},
-	name: {
+	DepartmentName: {
 		type: Sequelize.STRING,
 	},
-	role: {
+	Price: {
 		type: Sequelize.STRING,
 	},
-	age: {
+	StockQuantity: {
 		type: Sequelize.INTEGER,
-	},
-	forcePoints: {
-		type: Sequelize.INTEGER,
-	},
+	}
+	// createdAt:{
+	// 	type: Sequelize.DATETIME,
+	// },
+	// updatedAt:{
+	// 	type: Sequelize.DATETIME,
+	// }
+
 });
 
-// Syncs with DB
-Character.sync();
+Bamazon.sync();
 
-// Makes the Character Model available for other files (will also create a table)
-module.exports = Character;
+module.exports = Bamazon;
+
+//
+//
+//pretty sure this one is good to go
