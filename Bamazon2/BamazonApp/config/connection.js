@@ -30,5 +30,7 @@ var sequelize = new Sequelize(jawsDB.database, jawsDB.user, jawsDB.password, {
 
 });
 
+
+
 // Exports the connection for other files to use
 module.exports = sequelize;

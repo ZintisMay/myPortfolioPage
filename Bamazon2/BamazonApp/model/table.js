@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 
 var sequelize = require("../config/connection.js"); 
 
-var Bamazon = sequelize.define("bamazon", {
+var Bamazon = sequelize.define("Bamazon", {
 	ItemID: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
@@ -29,7 +29,11 @@ var Bamazon = sequelize.define("bamazon", {
 
 });
 
-Bamazon.sync();
+Bamazon.sync().then(function(post){
+	console.log("sync");
+	console.log(post);
+	console.log("sync");
+});
 
 module.exports = Bamazon;
 

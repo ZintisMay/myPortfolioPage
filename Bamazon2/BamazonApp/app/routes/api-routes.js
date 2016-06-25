@@ -1,4 +1,5 @@
 var Bamazon = require('../../model/table.js');
+var Sequelize = require ('sequelize');
 
 module.exports = function(app){
 
@@ -8,7 +9,7 @@ module.exports = function(app){
 		console.log("Object?")
 		console.log(res.locals);
 
-		Bamazon.findAll({where: {ItemID: 1}}).then(function(result){
+		Bamazon.findAll({}).then(function(result){
 			res.json(result);
 		});
 	});
