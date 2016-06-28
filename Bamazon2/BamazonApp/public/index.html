@@ -4,13 +4,77 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+	.jumbotron{text-align: center;}
+	.col {border-radius:2px;border-color:black;border-style: solid;}
+	td {width: 30%;}
+	th {background-color:orange;}
+	table {width:100%; margin:0px;padding:0px;border:1px solid black;}
+	.gray{background-color:#cccccc;}
+	.center{text-align: center;}
+</style>
+
 	<title>
-		
+		Welcome to Bamazon!
 	</title>
+
 </head>
 <body>
+<div class="container">
+	<div class="row">
+		<div class="col col-lg-12">
+			<div class="jumbotron">
+				<h1>Welcome to Bamazon!</h1>
+				<h3>Your one stop shop for all of life's necessities.</h3>
+
+			</div>
+		</div>
+	</div>
+	<div class="row ">
+
+		<div class="col col-lg-4 center">
+			<h4>Enter New Item</h4>
+			<div class="row">
+
+				<div class="center">
+					<form action="" method="post">
+										Item Name:<br>
+				    <input type="text" name="Name"><br>
+				    					Price:<br>
+				    <input type="text" name="Price"><br>
+				    					Stock: <br>
+				    <input type="text" name="Stock"><br><br>
+				    <input type='submit' value='Submit'>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col col-lg-8">
+			<table class="tabletarget">
+				
+
+			</table> 
+		</div>
+
+	</div>
+</div>
 
 <button id="showall">showall</button>
+
+
+
 <script type="text/javascript">
 	
 var currentURL = window.location.origin;
@@ -23,6 +87,8 @@ console.log(allURL);
 
 var localData;
 
+var counter = 0;
+
 	$(document).on('click', '#showall', function(){
 
 		console.log("showallajax");
@@ -30,10 +96,37 @@ var localData;
 		$.get(allURL, function(data){
 			console.log(data);
 			localData = data;
+			$('.tabletarget').html(makeTable(localData));
 		});
 
 		return false;
 	});
+
+function makeTable(x) {
+
+	var tableString = "<tr><th>Name</th><th>Price</th><th>Stock</th><th>Department</th></tr>";
+	for(z=0;z<x.length;z++){
+		tableString += makeRow(x[z].ProductName, x[z].Price, x[z].StockQuantity, x[z].DepartmentName);
+		counter++;
+	}
+	return tableString;
+}
+
+function makeRow(aa, bb, cc, dd){
+	var string = "";
+	if (counter % 2 == 0){
+		string += "<tr>";
+	
+	}else{
+		string += "<tr class='gray'>";
+	}
+		string += "<td>" + aa + "</td>";
+		string += "<td>" + bb + "</td>";
+		string += "<td>" + cc + "</td>";
+		string += "<td>" + dd + "</td>";
+		string += "</tr>"
+	return string;
+}
 
 </script>
 </body>
