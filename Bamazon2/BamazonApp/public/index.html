@@ -13,11 +13,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="style.css" />
+<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
 <style>
 	.jumbotron{text-align: center;}
 	.col {border-radius:2px;border-color:black;border-style: solid;}
-	td {width: 30%;}
+	td {width: 25%;}
 	th {background-color:orange;}
 	table {width:100%; margin:0px;padding:0px;border:1px solid black;}
 	.gray{background-color:#cccccc;}
@@ -42,26 +42,39 @@
 	</div>
 	<div class="row ">
 
-		<div class="col col-lg-4 center">
+		<div class="col col-lg-3 center">
 			<h4>Enter New Item</h4>
 			<div class="row">
 
 				<div class="center">
-					<form action="" method="post">
+
+					<form action="" method="post" id="myForm">
+
 										Item Name:<br>
-				    <input type="text" name="Name"><br>
+
+				    <input type="text" name="Name" id="Name"><br>
+
 				    					Price:<br>
-				    <input type="text" name="Price"><br>
+
+				    <input type="text" name="Price" id="Price"><br>
+
 				    					Stock: <br>
-				    <input type="text" name="Stock"><br><br>
-				    <input type='submit' value='Submit'>
+
+				    <input type="text" name="Department" id="Department"><br>
+
+				    					Department:<br>
+
+				    <input type="text" name="Stock" id="Stock"><br><br>
+
+				    <input type='submit' id='formsubmit' value='Submit'>
+
 					</form>
 				</div>
 
 			</div>
 		</div>
 
-		<div class="col col-lg-8">
+		<div class="col col-lg-9">
 			<table class="tabletarget">
 				
 
@@ -72,6 +85,7 @@
 </div>
 
 <button id="showall">showall</button>
+<button id="aaa">aaa</button>
 
 
 
@@ -89,31 +103,106 @@ var localData;
 
 var counter = 0;
 
-	$(document).on('click', '#showall', function(){
+
+
+	$(document).on('click', '.removeMe', function(){
+		var answer = confirm("Remove this entry? (forever?)")
+		var idNum = {idNum: $(this).attr('id')};
+		console.log(idNum);
+		if(answer){
+			
+
+			$.post(currentURL + '/delete', idNum).then(tableGET());
+		}else{console.log(idNum);}
+
+	});
+
+//populates the table on load
+	$(document).ready(function(){
 
 		console.log("showallajax");
 
-		$.get(allURL, function(data){
-			console.log(data);
-			localData = data;
-			$('.tabletarget').html(makeTable(localData));
-		});
+		tableGET();
 
 		return false;
 	});
 
+//this refreshes the table
+	$(document).on('click', '#showall', function(){
+
+		console.log("showallajax");
+
+		tableGET();
+
+		return false;
+
+	});
+
+//this was a test to make sure val() did what i thought
+	$(document).on('click', '#aaa', function(){
+
+		console.log("aaa");
+
+			var uuu = $('#Name').val();
+
+		console.log(uuu);
+
+	});
+
+//this lets you submit a new item to the DB
+	$(document).on('click', '#formsubmit', function(){
+
+		console.log("formsubmit");
+
+		var newURL = currentURL + '/new';
+
+		var sendObject = {
+			Name: $('#Name').val(),
+			Department: $('#Department').val(),
+			Price: $('#Price').val(),
+			Stock: $('#Stock').val()
+		}
+
+		if(sendObject.Name != "" || sendObject.Department != "" ||  sendObject.Price != "" || sendObject.Stock != ""){
+
+			console.log(sendObject);
+
+			$.post(newURL, sendObject).done(function(data){
+					console.log(data);
+
+			}).done(function(){tableGET();}
+			);
+
+		}else{alert("Form Incomplete");}
+
+		return false;
+	});
+
+//repopulates the table
+function tableGET(){
+	$.get(allURL, function(data){
+		console.log(data);
+		localData = data;
+		console.log(localData);
+		$('.tabletarget').html(makeTable(localData));
+	});
+}
+
+//returns a whole table as a string
 function makeTable(x) {
 
-	var tableString = "<tr><th>Name</th><th>Price</th><th>Stock</th><th>Department</th></tr>";
+	var tableString = "<tr><th>Name</th><th>Price</th><th>Stock</th><th>Department</th><th>Delete</th></tr>";
 	for(z=0;z<x.length;z++){
-		tableString += makeRow(x[z].ProductName, x[z].Price, x[z].StockQuantity, x[z].DepartmentName);
+		tableString += makeRow(x[z].ProductName, x[z].Price, x[z].StockQuantity, x[z].DepartmentName, x[z].ItemID);
 		counter++;
 	}
 	return tableString;
 }
 
-function makeRow(aa, bb, cc, dd){
+//makes an individual row string
+function makeRow(aa, bb, cc, dd, ee){
 	var string = "";
+
 	if (counter % 2 == 0){
 		string += "<tr>";
 	
@@ -124,6 +213,7 @@ function makeRow(aa, bb, cc, dd){
 		string += "<td>" + bb + "</td>";
 		string += "<td>" + cc + "</td>";
 		string += "<td>" + dd + "</td>";
+		string += "<td><button class='removeMe' id='"+ ee +"'>Remove</button></td>";
 		string += "</tr>"
 	return string;
 }
