@@ -14,32 +14,49 @@ module.exports = function(app){
 		});
 	});
 
-	app.get('/new', function(req, res){
+	app.post('/new', function(req, res){
 
 		console.log(req.body);
 		var newEntry = req.body;
 
-		console.log("/new");
+		console.log("/new (api call)");
 
 		Bamazon.create({
 			ProductName: newEntry.Name,
-			DepartmentName: newEntry.Department,
 			Price: newEntry.Price,
-			StockQuantity: newEntry.Stock
-		});
+			StockQuantity: newEntry.Stock,
+			DepartmentName: newEntry.Department
 
-		Bamazon.findAll({}).then(function(result){
-			res.json(result);
 		});
-		
 	});
+
+	// app.post('/update', function(req, res){
+
+	// 	console.log(req.body);
+	// 	var idTarget = req.body;
+
+	// 	console.log("/new (api call)");
+
+	// 	Bamazon.find({where:{ItemID: idTarget.name}}).on('success', function(Bamazon){
+	// 		if (Bamazon){
+	// 			Bamazon.updateAttributes({
+	// 				StockQuantity: 
+	// 			})
+	// 		}
+	// 	})
+			
+
+	// 	});
+	// });
 
 	app.post('/delete', function(req, res){
 		console.log(req.body.idNum);
 		Bamazon.destroy({
 			where:{
-				ItemId: req.body.idNum
+				ItemID: req.body.idNum
 			}
 		});
 	});
+
+	app.post
 }

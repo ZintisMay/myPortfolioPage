@@ -1,0 +1,8 @@
+	.jumbotron{text-align: center;padding:5px;}
+	.col {}
+	td {width: 25%;}
+	th {background-color:orange;}
+	table {width:100%; margin:0px;padding:0px;border:1px solid black;}
+	.gray{background-color:#cccccc;}
+	.center{text-align: center;}
+	.navbar{position:absolute;bottom:0;right:0;margin-bottom:-10px;}
